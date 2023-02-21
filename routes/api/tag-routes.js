@@ -60,8 +60,7 @@ router.put('/:id', async (req, res) => {
   
     updateById
     res.status(200).json({ message: "Tag has been successfully updated" });
-    } 
-    catch (err) {
+    } catch (err) {
       res.status(500).json(err);
     }
 });
@@ -81,7 +80,7 @@ router.delete('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(tagData);
+    res.status(200).json({ message: "Tag has been deleted" });
   } catch (err) {
     res.status(500).json(err);
   }
