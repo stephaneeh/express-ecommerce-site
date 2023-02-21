@@ -4,7 +4,6 @@ const sequelize = require('../config/connection.js');
 
 class Category extends Model {}
 
-//TODO: 
 Category.init(
   {
     id: {
@@ -23,7 +22,7 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'category',
+    modelName: 'Category',
   }
 );
 

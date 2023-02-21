@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Product } = require('../../models');
+const { Product, Category } = require('../../models');
 
 // The `/api/categories` endpoint
 
@@ -8,28 +8,24 @@ router.get('/', async (req, res) => { //FIXME: call working, product failing
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findAll({
-      include: {
-        model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'] }
-    });
+      include: {model: Product },
+  });
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/:id', async (req, res) => { //TODO:
+router.get('/:id', async (req, res) => { //TODO: WORKING
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findByPk(req.params.id, {
-      include: {
-        model: Product,
-        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'] }
+      include: {model: Product}
       });
 
       if (!categoryData) {
-        res.status(404).json({ message: 'No location found with this id!' });
+        res.status(404).json({ message: 'No category found with this id!' });
         return;
       }
   
@@ -39,9 +35,15 @@ router.get('/:id', async (req, res) => { //TODO:
     }
   });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
   // TODO: 
+  try {
+    const categoryData = await Category.create(req.body);
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.put('/:id', (req, res) => {
