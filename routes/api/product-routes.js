@@ -4,12 +4,11 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // The `/api/products` endpoint
 
 // get all products
-router.get('/', async (req, res) => { //COMPLETE: IS WORKING
+router.get('/', async (req, res) => { //TODO: IS WORKING
   // find all products
   // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findAll({
-      attributes: ['id', 'product_name', 'price', 'stock'],
       include: [
       {model: Category}, 
       {model: Tag, through: ProductTag }],
@@ -26,7 +25,6 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findByPk(req.params.id, {
-      attributes: ['id', 'product_name', 'price', 'stock'],
       include: [
       {model: Category}, 
       {model: Tag, through: ProductTag }],
@@ -68,7 +66,7 @@ router.post('/', (req, res) => {
       // if no product tags, just respond
       res.status(200).json(product);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then((product) => res.status(200).json(product))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
