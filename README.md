@@ -33,5 +33,15 @@ Move to root directory of your proejct and run the following commands to seed yo
 > npm start
 ```
 
+## Resources
+
+https://www.npmjs.com/package/express
+
+https://www.npmjs.com/package/inquirer
+
+https://www.npmjs.com/package/mysql2
+
+https://www.npmjs.com/package/sequelize
+
 ## Link to video
 https://drive.google.com/file/d/1hKga_3UeTuf3jZBlHQ8yx5A3-sQAr2TJ/view
