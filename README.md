@@ -1,12 +1,37 @@
-# 13 Object-Relational Mapping (ORM): E-Commerce Back End
+# Express Ecommerce Site
 
-## Your Task
+![License](https://img.shields.io/badge/License-mit-blue.svg)
 
-Internet retail, also known as **e-commerce**, is the largest sector of the electronics industry, generating an estimated $29 trillion in 2019. E-commerce platforms like Shopify and WooCommerce provide a suite of services to businesses of all sizes. Due to their prevalence, understanding the fundamental architecture of these platforms will benefit you as a full-stack web developer.
+## Description
 
-Your task is to build the back end for an e-commerce site by modifying starter code. You’ll configure a working Express.js API to use Sequelize to interact with a MySQL database.
+This project was completed to build the back end of a e-commerce site using Express.js APIs and using Sequelize to interact with my MySQL database.
 
-Because this application won’t be deployed, you’ll also need to provide a link to a walkthrough video that demonstrates its functionality and all of the acceptance criteria being met. You’ll need to submit a link to the video and add it to the readme of your project.
+## Structure
+
+- `server.js` The primary application script
+- `\db` Holds the required mysql scripts to create and set up the initial application database
+
+
+## Installation
+In your command line interface (cli), navigate to the application directory and run the following commands:
+```md
+> npm install
+
+```
+
+## Usage
+Set up your database by running the following command in your DB directory
+```md
+> mysql -u root
+> SOURCE schema.sql;
+> EXIT
+```
+
+Move to root directory of your proejct and run the following commands to seed your database and start the application
+```md
+> npm run seed
+> npm start
+```
 
 ## Link to video
 https://drive.google.com/file/d/1hKga_3UeTuf3jZBlHQ8yx5A3-sQAr2TJ/view
