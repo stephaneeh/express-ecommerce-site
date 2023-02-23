@@ -4,7 +4,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // The `/api/products` endpoint
 
 // get all products
-router.get('/', async (req, res) => { //TODO: IS WORKING
+router.get('/', async (req, res) => { 
   // find all products
   // be sure to include its associated Category and Tag data
   try {
@@ -125,12 +125,21 @@ router.delete('/:id', async(req, res) => {
       },
     });
 
+    const chosenId = req.params.id;
+    
+    const deleteProductTag = await ProductTag.destroy({
+      where: {
+        id: chosenId,
+      },
+    });
+
     if (!deleteById) {
       res.status(404).json({ message: 'No product found with that id!' });
       return;
     }
 
     deleteById;
+    deleteProductTag;
     res.status(200).json({ message: "Product successfully deleted" });
 
   } catch (err) {
